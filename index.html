@@ -9,14 +9,22 @@
 </head>
 
 <body>
-  <div id="counterApp">
+  <!-- <div id="counterApp">
     Counter: {{total}}
     <button v-on:click="increaseCounter">++</button>
     <button @click=decreaseCounter>--</button>
+  </div> -->
+  <!-- <h1>hello world</h1> -->
+  <div id="app">
+    Username: {{username}} <br />
+    <!-- <input type="text" v-model="username">
+    <input type="text" :value="username" @input="changeUsername">
+    <input type="text" v-bind:value="username">
+    <input type="text" v-bind:value="username"> -->
+    <input type="text" v-model="usernameModel">
   </div>
-  <h1>hello world</h1>
   <script src="./node_modules/vue/dist/vue.global.js"></script>
-  <script>
+  <!-- <script>
     const CounterApp = {
       data() {
         return {
@@ -33,6 +41,31 @@
       }
     }
     Vue.createApp(CounterApp).mount('#counterApp')
+  </script> -->
+  <script>
+    const App = {
+      data() {
+        return {
+          username: ''
+        };
+      },
+      // methods: {
+      //   changeUsername(event) {
+      //     console.log(event.target.value);
+      //   }
+      // },
+      computed: {
+        usernameModel: {
+          get() {
+            return this.username.toUpperCase();
+          },
+          set(value) {
+            this.username = value;
+          }
+        }
+      }
+    }
+    Vue.createApp(App).mount('#app')
   </script>
 </body>
 
