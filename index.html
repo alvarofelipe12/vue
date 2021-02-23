@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Vue</title>
 </head>
 
 <body>
@@ -16,12 +16,15 @@
   </div> -->
   <!-- <h1>hello world</h1> -->
   <div id="app">
-    Username: {{username}} <br />
+    Username: {{ username }} <br /><br />
+    <!-- Is logged in? {{ isLoggedIn }}<br /><br /> -->
+    Is logged in? {{ isLoggedIn2() }}<br /><br />
+    <input type="text" v-model="username">
     <!-- <input type="text" v-model="username">
     <input type="text" :value="username" @input="changeUsername">
     <input type="text" v-bind:value="username">
     <input type="text" v-bind:value="username"> -->
-    <input type="text" v-model="usernameModel">
+    <!-- <input type="text" v-model="usernameModel"> -->
   </div>
   <script src="./node_modules/vue/dist/vue.global.js"></script>
   <!-- <script>
@@ -54,14 +57,25 @@
       //     console.log(event.target.value);
       //   }
       // },
-      computed: {
-        usernameModel: {
-          get() {
-            return this.username.toUpperCase();
-          },
-          set(value) {
-            this.username = value;
-          }
+      // computed: {
+      //   usernameModel: {
+      //     get() {
+      //       return this.username.toUpperCase();
+      //     },
+      //     set(value) {
+      //       this.username = value;
+      //     }
+      //   }
+      // }
+      // computed: {
+      //   isLoggedIn() {
+      //     return this.username === 'tudor1';
+      //   }
+      // },
+      // with methods u can pass params
+      methods: {
+        isLoggedIn2() {
+        return this.username === 'afg';
         }
       }
     }
