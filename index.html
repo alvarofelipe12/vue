@@ -39,7 +39,12 @@
     <input type="text" v-bind:value="username"> -->
       <!-- <input type="text" v-model="usernameModel"> -->
       <div class="admin-panel" v-if="isAdmin">
-        Admin Panel
+        <strong>Admin Panel</strong>
+        <ul>
+          <li v-for="(task, key) of adminTodoTasks">
+            {{ key+1 }} {{ task }}
+          </li>
+        </ul>
       </div>
       <div class="moderator-panel" v-else-if="isModerator">
         Moderator Panel
@@ -52,11 +57,19 @@
       </div>
       <hr class="user-valid" v-show="isUserTypeValid" />
       <div class="form-group">
-        <input type="text" v-model="userType">
+        <input type="text" v-model="userType" class="form-control">
       </div>
-      <button @click="userType = 'ADMIN'">Change to Admin</button>
-      <button @click="userType = 'MODERATOR'">Change to Moderator</button>
-      <button @click="userType = 'GUEST'">Change to Guest</button>
+      <div class="row">
+        <div class="col">
+          <button @click="userType = 'ADMIN'" class="btn btn-primary">Change to Admin</button>
+        </div>
+        <div class="col">
+          <button @click="userType = 'MODERATOR'" class="btn btn-secondary">Change to Moderator</button>
+        </div>
+        <div class="col">
+          <button @click="userType = 'GUEST'" class="btn">Change to Guest</button>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -114,7 +127,13 @@
       // }
       data() {
         return {
-          userType: ''
+          userType: '',
+          adminTodoTasks: [
+            'Learn Vue.js',
+            'Write code',
+            'Eat breakfast',
+            'Drive car'
+          ]
         };
       },
       computed: {
