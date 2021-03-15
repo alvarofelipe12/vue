@@ -45,6 +45,9 @@
             {{ key+1 }} {{ task }}
           </li>
         </ul>
+        <todo-item :text="`Hi I'm todo task`"></todo-item>
+        <todo-item text="Hi I'm todo task"></todo-item>
+        <todo-item v-for="task of adminTodoTasks" :text="task"></todo-item>
       </div>
       <div class="moderator-panel" v-else-if="isModerator">
         Moderator Panel
@@ -151,7 +154,12 @@
         },
       }
     }
-    Vue.createApp(App).mount('#app')
+    const app = Vue.createApp(App);
+    app.component('todo-item', {
+      props: ['text'],
+      template: '<strong> {{text}}</strong>'
+    });
+    app.mount('#app');
   </script>
 </body>
 
